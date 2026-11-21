@@ -24,6 +24,14 @@ python -m http.server 8000 --bind 127.0.0.1 --directory docs
 
 Open http://127.0.0.1:8000 in a current browser. Run `node --test` from the repository root with Node.js 22 or later.
 
+## Interface
+
+A rose editor and plum review pane use a redaction illustration and large serif heading to distinguish artifact review from data analysis.
+
+Use Ctrl+Enter or Command+Enter to run the current inputs. Clear editor clears pasted text, and View results moves keyboard focus to the output. Status text identifies changed inputs and refreshed results.
+
+Fonts and imagery are bundled locally. Visual sources and font licenses are recorded in [asset credits](docs/Assets.md).
+
 ## Sponsors
 
 Supported by [LeadCeleris](https://www.leadceleris.com/) and [AIFFICIENTO](https://www.aifficiento.biz/).
