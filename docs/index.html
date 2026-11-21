@@ -1,42 +1,125 @@
 <!doctype html>
 <html lang="en" data-app="preview-guard">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Review artifacts before sharing | Preview Guard</title>
-  <meta name="description" content="Find likely credentials, private endpoints, and local paths in pasted text. Export a copy with matches masked.">
-  <link rel="canonical" href="https://musabukhari237.github.io/preview-guard/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Review artifacts before sharing | Preview Guard">
-  <meta property="og:description" content="Find likely credentials, private endpoints, and local paths in pasted text. Export a copy with matches masked.">
-  <meta property="og:url" content="https://musabukhari237.github.io/preview-guard/">
-  <meta property="og:image" content="https://musabukhari237.github.io/preview-guard/preview.png">
-  <meta property="og:image:alt" content="Preview Guard displaying a synthetic example result">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="app.css">
-  <script type="module" src="app.mjs"></script>
-  <script type="module" src="experience.mjs"></script>
-  <script type="module" src="experience.mjs"></script>
-</head>
-<body>
-<a class="skip" href="#workspace">Skip to workspace</a>
-<header><a class="brand" href="./"><img src="logo.svg" alt="">Preview Guard</a><nav aria-label="Main"><a href="#guide">How to use</a><a class="repo" href="https://github.com/MusaBukhari237/preview-guard">GitHub ↗</a></nav></header>
-<main>
-<section class="masthead"><div class="intro"><p class="category">Artifact review</p><h1>Share with a second look.</h1><p class="description">Review pasted artifacts for likely credentials, private endpoints, and local paths. Export a masked copy.</p></div><figure class="scene diagram"><img src="scene.svg" alt="Artifact review process illustration" width="440" height="260"></figure></section>
-<div class="workspace" id="workspace">
-  <section class="panel" aria-labelledby="settings"><h2 id="settings">Artifact & masking rules</h2>
-    <div class="inputs"><label class="wide">Text, config or log excerpt<textarea id="source" rows="10" maxlength="500000" spellcheck="false"></textarea></label><label class="wide">Custom terms (one per line)<textarea id="terms" rows="3" maxlength="4000" spellcheck="false"></textarea></label><label class="wide checkbox"><input id="emails" type="checkbox"> Mask email addresses too</label></div>
-    <div class="actions"><button type="button" id="run">Scan artifact</button><button type="button" id="sample" class="quiet">Load redaction example</button></div>
-    <small>Findings list a line number and category. Use custom terms for project names or identifiers you want to remove.</small>
-  </section>
-  <section class="panel" aria-labelledby="result-title" id="output-panel"><h2 id="result-title" tabindex="-1">Review findings</h2><p class="result-status" id="result-status" aria-live="polite">Ready when you are</p>
-    <div class="result" id="result"><p class="result-summary" aria-live="polite">Load an example or paste your own input.</p></div>
-  </section>
-</div>
-<details class="guide" id="guide"><summary>How to use Preview Guard</summary><ol><li>Paste a text artifact, config excerpt, or log.</li><li>Add private names as custom terms and choose email masking.</li><li>Scan, inspect the findings, and review the masked export before sharing.</li></ol></details>
-</main>
-<footer><span>Preview Guard · <a href="https://github.com/MusaBukhari237/preview-guard/blob/main/LICENSE">MIT licensed</a></span><span class="credits"><a href="https://www.leadceleris.com/">LeadCeleris</a><a href="https://www.aifficiento.biz/">AIFFICIENTO</a></span></footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Review artifacts before sharing | Preview Guard</title>
+    <meta
+      name="description"
+      content="Find likely credentials, private endpoints, and local paths in pasted text. Export a copy with matches masked."
+    />
+    <link rel="canonical" href="https://musabukhari237.github.io/preview-guard/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Review artifacts before sharing | Preview Guard" />
+    <meta
+      property="og:description"
+      content="Find likely credentials, private endpoints, and local paths in pasted text. Export a copy with matches masked."
+    />
+    <meta property="og:url" content="https://musabukhari237.github.io/preview-guard/" />
+    <meta
+      property="og:image"
+      content="https://musabukhari237.github.io/preview-guard/preview.png"
+    />
+    <meta property="og:image:alt" content="Preview Guard displaying a synthetic example result" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="app.css" />
+    <script type="module" src="app.mjs"></script>
+    <script type="module" src="experience.mjs"></script>
+    <script type="module" src="experience.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Skip to workspace</a>
+    <header>
+      <a class="brand" href="./"><img src="logo.svg" alt="" />Preview Guard</a>
+      <nav aria-label="Main">
+        <a href="#guide">How to use</a
+        ><a class="repo" href="https://github.com/MusaBukhari237/preview-guard">GitHub ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="masthead">
+        <div class="intro">
+          <p class="category">Artifact review</p>
+          <h1>Share with a second look.</h1>
+          <p class="description">
+            Review pasted artifacts for likely credentials, private endpoints, and local paths.
+            Export a masked copy.
+          </p>
+        </div>
+        <figure class="scene diagram">
+          <img
+            src="scene.svg"
+            alt="Artifact review process illustration"
+            width="440"
+            height="260"
+          />
+        </figure>
+      </section>
+      <div class="workspace" id="workspace">
+        <section class="panel" aria-labelledby="settings">
+          <h2 id="settings">Artifact & masking rules</h2>
+          <div class="inputs">
+            <label class="wide"
+              >Text, config or log excerpt<textarea
+                id="source"
+                rows="10"
+                maxlength="500000"
+                spellcheck="false"
+              ></textarea></label
+            ><label class="wide"
+              >Custom terms (one per line)<textarea
+                id="terms"
+                rows="3"
+                maxlength="4000"
+                spellcheck="false"
+              ></textarea></label
+            ><label class="wide checkbox"
+              ><input id="emails" type="checkbox" /> Mask email addresses too</label
+            >
+          </div>
+          <div class="actions">
+            <button type="button" id="run">Scan artifact</button
+            ><button type="button" id="sample" class="quiet">Load redaction example</button>
+          </div>
+          <small
+            >Findings list a line number and category. Use custom terms for project names or
+            identifiers you want to remove.</small
+          >
+        </section>
+        <section class="panel" aria-labelledby="result-title" id="output-panel">
+          <h2 id="result-title" tabindex="-1">Review findings</h2>
+          <p class="result-status" id="result-status" aria-live="polite">Ready when you are</p>
+          <div class="result" id="result">
+            <p class="result-summary" aria-live="polite">
+              Load an example or paste your own input.
+            </p>
+          </div>
+        </section>
+      </div>
+      <details class="guide" id="guide">
+        <summary>How to use Preview Guard</summary>
+        <ol>
+          <li>Paste a text artifact, config excerpt, or log.</li>
+          <li>Add private names as custom terms and choose email masking.</li>
+          <li>Scan, inspect the findings, and review the masked export before sharing.</li>
+        </ol>
+      </details>
+    </main>
+    <footer>
+      <span
+        >Preview Guard ·
+        <a href="https://github.com/MusaBukhari237/preview-guard/blob/main/LICENSE"
+          >MIT licensed</a
+        ></span
+      ><span class="credits"
+        ><a href="https://www.leadceleris.com/">LeadCeleris</a
+        ><a href="https://www.aifficiento.biz/">AIFFICIENTO</a></span
+      >
+    </footer>
+  </body>
 </html>
